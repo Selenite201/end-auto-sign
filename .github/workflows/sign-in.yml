@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # UTC 17:00 = Asia/Shanghai 01:00 (+1 day)
-    - cron: "23 11 * * *"
+    - cron: "04 03 * * *"
 
 jobs:
   sign-in:
