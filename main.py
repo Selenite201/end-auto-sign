@@ -3,6 +3,7 @@ import asyncio
 import json
 import logging
 import os
+import random
 
 import yaml
 from skland_api import SklandAPI
@@ -68,8 +69,15 @@ def _parse_users_from_env() -> list[dict]:
     return []
 
 async def run_sign_in():
-    # 1. 加载配置（可选）
+    # 1. 加载配置
     config = _load_config()
+
+    # --- 新增：随机等待 1-60 秒 ---
+
+    wait_time = random.uniform(1, 60)
+    logger.info(f"==> 脚本将随机等待 {wait_time:.2f} 秒后执行...")
+    await asyncio.sleep(wait_time)
+    # ----------------------------
 
     # 2. 日志等级控制
     user_log_level = config.get("log_level", "info").lower()
